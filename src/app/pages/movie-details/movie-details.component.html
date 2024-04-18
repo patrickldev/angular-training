@@ -1,0 +1,30 @@
+<div class="card w-3/5 bg-base-100 shadow-xl mx-auto cardWrapper">
+  <figure>
+    <img class="h-full" [src]="movieDetails?.poster" alt="Shoes" />
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title text-3xl">{{ movieDetails?.title }}</h2>
+    <p>{{ movieDetails?.summary }}</p>
+    <div class="divider"></div>
+    <h3 class="text-2xl">Details</h3>
+    <div>
+      <p>Box Office: {{ movieDetails?.box_office | currency }} Million</p>
+      <p>Budget: ${{ movieDetails?.budget }} Million</p>
+      <p>Duration: {{ movieDetails?.duration | mth }}</p>
+      <p>
+        Duration: @for (producer of movieDetails?.producers; track $index) {
+        {{ producer }} }
+      </p>
+      <p>
+        Cinematographers: @for (cinematographer of
+        movieDetails?.cinematographers; track $index) {
+        {{ cinematographer }} }
+      </p>
+    </div>
+    <div class="card-actions justify-end">
+      <button (click)="backToList()" class="btn btn-primary">
+        Back To Movie List
+      </button>
+    </div>
+  </div>
+</div>

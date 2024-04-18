@@ -1,0 +1,77 @@
+<div class="flex gap-4 mb-5">
+  <label class="input input-bordered flex items-center gap-2">
+    <input
+      #inputTitle
+      (keyup)="filter()"
+      [(ngModel)]="filterText"
+      type="text"
+      class="grow"
+      placeholder="Title"
+    />
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 16 16"
+      fill="currentColor"
+      class="w-4 h-4 opacity-70"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+        clip-rule="evenodd"
+      />
+    </svg>
+  </label>
+  <label class="input input-bordered flex items-center gap-2">
+    <input
+      #inputYear
+      (keyup)="filter()"
+      [(ngModel)]="filterYear"
+      type="text"
+      class="grow"
+      placeholder="Release Year"
+    />
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 16 16"
+      fill="currentColor"
+      class="w-4 h-4 opacity-70"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+        clip-rule="evenodd"
+      />
+    </svg>
+  </label>
+</div>
+
+<div class="overflow-x-auto">
+  <table class="table">
+    <!-- head -->
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Release date</th>
+        <th>Duration</th>
+        <th>Budget</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- row 1 -->
+      @for (movie of movieFiltered; track movie.id) {
+      <tr class="hover">
+        <td>{{ movie.title }}</td>
+        <td>{{ movie.release_date | date : "yyyy-M-dd" }}</td>
+        <td>{{ movie.duration | mth }}</td>
+        <td>${{ movie.budget }} million</td>
+        <td>
+          <button (click)="movieDetails(movie.id)" class="btn btn-primary">
+            Details
+          </button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
