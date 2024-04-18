@@ -12,7 +12,7 @@
       <p>Budget: ${{ movieDetails?.budget }} Million</p>
       <p>Duration: {{ movieDetails?.duration | mth }}</p>
       <p>
-        Duration: @for (producer of movieDetails?.producers; track $index) {
+        Producers: @for (producer of movieDetails?.producers; track $index) {
         {{ producer }} }
       </p>
       <p>
